@@ -22,7 +22,9 @@ mongoose.connect('mongodb://localhost:27017/cbecomm')
 
 
 const productroutes = require('./routes/product');
+const reviewroutes = require('./routes/review');
 app.use(productroutes);
+app.use(reviewroutes);
 
 
 app.listen(PORT,()=>{
