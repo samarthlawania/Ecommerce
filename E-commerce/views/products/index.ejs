@@ -1,0 +1,37 @@
+<% layout('layout/boilerplate') %>
+
+<style>
+    .card {
+        height: 100%;
+    }
+
+    .card-body {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+    }
+
+    .card-description {
+        flex: 1;
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-line-clamp: 3; /* Adjust the number of lines */
+        -webkit-box-orient: vertical;
+    }
+</style>
+
+<div class="row">
+    <% for (let product of products) { %>
+        <div class="col-lg-3" style="margin-bottom: 2.2rem;">
+            <div class="card shadow-sm" style="width: 15rem;">
+                <img src="<%= product.img %>" class="card-img-top" alt="product-image" style="height: 12rem; max-height: 12rem; width: 13rem; object-fit: contain; align-self: center; padding: 0.4rem 0rem 0rem;">
+                <div class="card-body">
+                    <h5 class="card-title"><%= product.name %></h5>
+                    <h3 class="card-text">Price :&#x20B9;<%= product.price %></h3>
+                    <p class="card-description"><%= product.desc %></p>
+                    <a href="/products/<%=product._id%>" class="btn btn-primary">Buy Now</a>
+                </div>
+            </div>
+        </div>
+    <% } %>
+</div>

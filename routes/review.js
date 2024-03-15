@@ -8,15 +8,26 @@ router.post("/products/:id/reviews",async(req,res)=>{
     const {id} = req.params;
     const {rating ,comment} = req.body;
 
-    const product = await Product.findById(id);
-    const review = new Review({rating ,comment});
+    try {
+        const product = await Product.findById(id);
+        if (!product) {
+            return res.status(404).send('Product not found');
+        }
 
-    product.reviews.push(review);
-    await  review.save();
-    await product.save();
-    console.log(req.body);
+        const review = new Review({ rating, comment });
 
-    res.send('Review Route');
+        product.reviews.push(review); 
+        await review.save();
+
+        await product.save();
+
+        console.log('Review added:', review);
+
+        res.send('Review added successfully');
+    } catch (error) {
+        console.error('Error adding review:', error);
+        res.status(500).send('Error adding review');
+    }
 })
 
 module.exports = router;

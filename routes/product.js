@@ -14,7 +14,7 @@ router.get("/products/new",(req,res)=>{
 })
 
 router.post("/products", async(req,res)=>{
-    const {name,img,price,desc} = req.body;
+    const {name,img,price,desc} = req.body; 
     await Product.create({name,img,price,desc});
     res.redirect("/products");
 })
@@ -22,7 +22,7 @@ router.post("/products", async(req,res)=>{
 
 router.get("/products/:id",async(req,res)=>{
     const {id} = req.params;
-    const product = await Product.findById(id);
+    const product = await Product.findById(id).populate('reviews');
    // console.log(product);
     res.render('products/show',{product});
 })

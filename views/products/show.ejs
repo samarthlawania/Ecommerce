@@ -1,31 +1,68 @@
 <% layout('layout/boilerplate') %>
 <div class="row">
-    <div class="col-lg-4 product-card mt-1">
-        <div class="card shadow mt-3 mx-auto" style="width:27rem;">
-            <img class="img" src="<%=product.img%>" class="card-img-top" alt="img" style="height: 12rem; max-height: 12rem; width: 13rem; object-fit: contain; align-self: center; padding: 0.4rem 0rem 0rem;">
-            <div class="card-body">
-                <h3 class="card-title text-center"> <%= product.name %> </h3>
-                <h5 class="card-title"> Rs: <%= product.price %> </h5>
-                <p class="card-text"> <%= product.desc %> </p>
-                <a href="#" class="btn btn-success">Buy</a>
-                <a href="#" class="btn btn-secondary">Add to Cart</a>
-                <a href="/products/<%=product._id%>/edit" class="btn btn-info">Edit</a>
-                <a href="#" class="btn btn-secondary">Add to Cart</a>
-            </div>
-        </div>
+  <div class="col-lg-3 product-card mt-1">
+    <div class="card shadow mt-3 mx-auto" style="width: 27rem">
+      <img
+        class="img"
+        src="<%=product.img%>"
+        class="card-img-top"
+        alt="img"
+        style="
+          height: 12rem;
+          max-height: 12rem;
+          width: 13rem;
+          object-fit: contain;
+          align-self: center;
+          padding: 0.4rem 0rem 0rem;
+        "
+      />
+      <div class="card-body">
+        <h3 class="card-title text-center"><%= product.name %></h3>
+        <h5 class="card-title">Rs: <%= product.price %></h5>
+        <p class="card-text"><%= product.desc %></p>
+        <a href="#" class="btn btn-success">Buy</a>
+        <a href="#" class="btn btn-secondary">Add to Cart</a>
+        <a href="/products/<%=product._id%>/edit" class="btn btn-info">Edit</a>
+        <a href="#" class="btn btn-secondary">Add to Cart</a>
+      </div>
     </div>
-    <div class="col-lg-4 mx-auto">
-        <h1>Reviews</h1>
-        <form action="/products/<%=product._id%>/reviews" method="POST">
-          <div class="mb-6">
-            <label for="rating" class="form-label"></label>
-            <input type="range" class = "form-control" min="0" max="5" name="rating" id="rating">
-          </div>
-          <div class="mb-3">
-            <label for="comment" class="form-label"></label>
-            <textarea name="comment" id="desc" cols="10" rows="4" class="form-control"></textarea>
-          </div>
-          <button type="submit" class="btn btn-success btn-sm">Submit</button>
-        </form>
+  </div>
+  <div class="col-lg-4 mx-auto">
+    <h1>Reviews</h1>
+    <form action="/products/<%=product._id%>/reviews" method="POST">
+      <div class="mb-6">
+        <label for="rating" class="form-label"></label>
+        <input
+          type="range"
+          class="form-control"
+          min="0"
+          max="5"
+          name="rating"
+          id="rating"
+        />
+      </div>
+      <div class="mb-3">
+        <label for="comment" class="form-label"></label>
+        <textarea
+          name="comment"
+          id="desc"
+          cols="10"
+          rows="4"
+          class="form-control"
+        ></textarea>
+      </div>
+      <button type="submit" class="btn btn-success btn-sm">Submit</button>
+    </form>
+  </div>
+  <div class="my-3">
+    <% for(let reviews of product.reviews){%>
+    <div class="card">
+      <h5 class="card-header">Rating : <%= reviews.rating %></h5>
+      <div class="card-body">
+        <p class="card-text"><%= reviews.comment %></p>
+        <a href="#" class="btn btn-primary">DELETE</a>
+      </div>
     </div>
+    <%}%>
+  </div>
 </div>
