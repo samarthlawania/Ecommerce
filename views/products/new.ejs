@@ -2,10 +2,10 @@
 
 <div class="row">
     <div class="col-md-6 mx-auto">
-        <form action="/products" method="POST">
+        <form action="/products" method="POST" class="needs-validation" novalidate>
             <div class="mb-3">
                 <label for="name" class="form-label">Name of the product:</label>
-                <input class="form-control" "text" name="name" id="name" placeholder="Product Name">
+                <input class="form-control" "text" name="name" id="name" placeholder="Product Name" required>
             </div>
             <div class="mb-3">
                 <label for="img" class="form-label">Image URL</label>
@@ -15,14 +15,16 @@
                 <label for="price" class="form-label">Price of the product:</label>
                 <div class="input-group mb-3">
                     <span class="input-group-text" id="basic-addon1">&#x20B9</span>
-                    <input class="form-control" type="text" name="price" id="price" placeholder="Paisaa">
+                    <input class="form-control" type="text" name="price" id="price" placeholder="Paisaa" required>
                 </div>
             </div>
             <div class="mb-3">
                 <label for="desc" class="form-label">Description</label>
-                <textarea class="form-control" name="desc" id="desc" rows="7" ></textarea>
+                <textarea class="form-control" name="desc" id="desc" rows="7" required></textarea>
             </div>
             <button class="btn btn-primary btn-success" type="submit">ADD</button>
         </form>
     </div>
 </div>
+
+

@@ -10,7 +10,7 @@ const reviews = new mongoose.Schema({
         type:String,
         trim:true,
     }
-});
+},{timestamps:true});
 
 
 const Review = mongoose.model('Review',reviews);

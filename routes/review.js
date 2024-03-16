@@ -4,7 +4,7 @@ const Product = require("../models/productSchema");
 const Review = require("../models/review");
 
 
-router.post("/products/:id/reviews",async(req,res)=>{
+router.post("/products/:id",async(req,res)=>{
     const {id} = req.params;
     const {rating ,comment} = req.body;
 
@@ -23,7 +23,7 @@ router.post("/products/:id/reviews",async(req,res)=>{
 
         console.log('Review added:', review);
 
-        res.send('Review added successfully');
+        res.redirect(`/products/${id}`);
     } catch (error) {
         console.error('Error adding review:', error);
         res.status(500).send('Error adding review');

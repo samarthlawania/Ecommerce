@@ -23,23 +23,31 @@
         <a href="#" class="btn btn-success">Buy</a>
         <a href="#" class="btn btn-secondary">Add to Cart</a>
         <a href="/products/<%=product._id%>/edit" class="btn btn-info">Edit</a>
-        <a href="#" class="btn btn-secondary">Add to Cart</a>
+        <form class="d-inline-block" action="/products/<%=product._id%>?_method=DELETE" method="POST">
+          <button class="btn btn-m btn-danger">Delete</button>
+      </form>
       </div>
     </div>
   </div>
   <div class="col-lg-4 mx-auto">
     <h1>Reviews</h1>
-    <form action="/products/<%=product._id%>/reviews" method="POST">
+    <form action="/products/<%=product._id%>" method="POST">
       <div class="mb-6">
         <label for="rating" class="form-label"></label>
-        <input
-          type="range"
-          class="form-control"
-          min="0"
-          max="5"
-          name="rating"
-          id="rating"
-        />
+        <div>
+          <fieldset class="starability-coinFlip">
+            <input type="radio" id="first-rate1" name="rating" value="1" />
+            <label for="first-rate1" title="Terrible">1 star</label>
+            <input type="radio" id="first-rate2" name="rating" value="2" />
+            <label for="first-rate2" title="Not good">2 stars</label>
+            <input type="radio" id="first-rate3" name="rating" value="3" />
+            <label for="first-rate3" title="Average">3 stars</label>
+            <input type="radio" id="first-rate4" name="rating" value="4" />
+            <label for="first-rate4" title="Very good">4 stars</label>
+            <input type="radio" id="first-rate5" name="rating" value="5" />
+            <label for="first-rate5" title="Amazing">5 stars</label>
+          </fieldset>
+        </div>
       </div>
       <div class="mb-3">
         <label for="comment" class="form-label"></label>
