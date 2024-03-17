@@ -2,9 +2,9 @@ const express = require('express');
 const router = express.Router();
 const Product = require("../models/productSchema");
 const Review = require("../models/review");
+const {validateReview} = require('../middleware');
 
-
-router.post("/products/:id",async(req,res)=>{
+router.post("/products/:id",validateReview,async(req,res)=>{
     const {id} = req.params;
     const {rating ,comment} = req.body;
 
